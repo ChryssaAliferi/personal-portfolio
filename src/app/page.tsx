@@ -92,11 +92,11 @@ function Header() {
           Blog
         </Link>
         <Link
-          href="#about"
-          onClick={() => trackEvent("Nav Link Clicked", { link: "About" })}
+          href="/cv"
+          onClick={() => trackEvent("Nav Link Clicked", { link: "CV" })}
           className="font-primary text-base text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
         >
-          About
+          CV
         </Link>
         <Link
           href="#contact"
@@ -392,11 +392,11 @@ function Footer() {
               Blog
             </Link>
             <Link
-              href="#about"
-              onClick={() => trackEvent("Footer Nav Clicked", { link: "About" })}
+              href="/cv"
+              onClick={() => trackEvent("Footer Nav Clicked", { link: "CV" })}
               className="font-primary text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
             >
-              About
+              CV
             </Link>
           </div>
           <div className="flex flex-col gap-4">
