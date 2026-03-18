@@ -284,7 +284,7 @@ function Footer() {
             Chryssa Aliferi
           </span>
           <p className="font-primary text-[15px] text-[var(--text-body)] leading-[1.6]">
-            Mobile engineer &amp; product manager building apps that make a difference. Currently open to new opportunities.
+            Mobile engineer &amp; product manager building apps that make a difference.
           </p>
           <div className="flex gap-4 pt-2">
             <a
