@@ -129,13 +129,6 @@ function Header() {
         >
           CV
         </Link>
-        <Link
-          href="/#contact"
-          onClick={() => trackEvent("CTA Clicked", { cta: "Work with me", location: "header" })}
-          className="font-primary text-[13px] font-medium text-white bg-[var(--accent)] rounded-full px-6 py-3 hover:opacity-90 transition-opacity"
-        >
-          Work with me
-        </Link>
       </nav>
     </header>
   );
