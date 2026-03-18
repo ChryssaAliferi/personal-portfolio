@@ -69,21 +69,38 @@ const blogPosts = [
 function Header() {
   return (
     <header className="flex items-center justify-between px-20 py-5 bg-[var(--card)] border-b border-[var(--border)]">
-      <Link href="/" className="font-serif text-2xl text-[var(--text-primary)] tracking-[-0.5px]">
+      <Link
+        href="/"
+        onClick={() => trackEvent("Logo Clicked", { location: "header" })}
+        className="font-serif text-2xl text-[var(--text-primary)] tracking-[-0.5px]"
+      >
         Chryssa Aliferi
       </Link>
       <nav className="flex items-center gap-10">
-        <Link href="#projects" className="font-primary text-base text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
+        <Link
+          href="#projects"
+          onClick={() => trackEvent("Nav Link Clicked", { link: "Projects" })}
+          className="font-primary text-base text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+        >
           Projects
         </Link>
-        <Link href="#blog" className="font-primary text-base text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
+        <Link
+          href="#blog"
+          onClick={() => trackEvent("Nav Link Clicked", { link: "Blog" })}
+          className="font-primary text-base text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+        >
           Blog
         </Link>
-        <Link href="#about" className="font-primary text-base text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
+        <Link
+          href="#about"
+          onClick={() => trackEvent("Nav Link Clicked", { link: "About" })}
+          className="font-primary text-base text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+        >
           About
         </Link>
         <Link
           href="#contact"
+          onClick={() => trackEvent("CTA Clicked", { cta: "Get in Touch", location: "header" })}
           className="font-primary text-[13px] font-medium text-white bg-[var(--accent)] rounded-full px-6 py-3 hover:opacity-90 transition-opacity"
         >
           Get in Touch
@@ -113,12 +130,14 @@ function Hero() {
       <div className="flex gap-4 pt-6">
         <Link
           href="#projects"
+          onClick={() => trackEvent("CTA Clicked", { cta: "View Projects", location: "hero" })}
           className="font-primary text-[13px] font-medium text-white bg-[var(--accent)] rounded-full px-8 py-4 hover:opacity-90 transition-opacity"
         >
           View Projects
         </Link>
         <Link
           href="#blog"
+          onClick={() => trackEvent("CTA Clicked", { cta: "Read Blog", location: "hero" })}
           className="font-primary text-[13px] font-medium text-[var(--text-primary)] bg-white rounded-full px-8 py-4 border border-[var(--border)] hover:bg-[var(--surface-tint)] transition-colors"
         >
           Read Blog
@@ -270,6 +289,7 @@ function Blog() {
           href="https://medium.com/@califeri"
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => trackEvent("External Link Clicked", { link: "View All Posts", platform: "Medium" })}
           className="flex items-center gap-2 font-primary text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
         >
           View all posts
@@ -304,6 +324,7 @@ function Footer() {
               href="https://github.com/ChryssaAliferi"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackEvent("Social Icon Clicked", { platform: "GitHub", location: "footer" })}
               className="p-3 rounded-xl bg-[var(--surface-tint)] border border-[var(--border)] hover:bg-[var(--surface-muted)] transition-colors"
             >
               <svg className="w-5 h-5 fill-[var(--text-secondary)]" viewBox="0 0 24 24">
@@ -314,6 +335,7 @@ function Footer() {
               href="https://www.linkedin.com/in/chryssaaliferi/"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackEvent("Social Icon Clicked", { platform: "LinkedIn", location: "footer" })}
               className="p-3 rounded-xl bg-[var(--surface-tint)] border border-[var(--border)] hover:bg-[var(--surface-muted)] transition-colors"
             >
               <svg className="w-5 h-5 fill-[var(--text-secondary)]" viewBox="0 0 24 24">
@@ -324,6 +346,7 @@ function Footer() {
               href="https://x.com/ChryssaAl"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackEvent("Social Icon Clicked", { platform: "X", location: "footer" })}
               className="p-3 rounded-xl bg-[var(--surface-tint)] border border-[var(--border)] hover:bg-[var(--surface-muted)] transition-colors"
             >
               <svg className="w-5 h-5 fill-[var(--text-secondary)]" viewBox="0 0 24 24">
@@ -332,6 +355,7 @@ function Footer() {
             </a>
             <a
               href="mailto:c.aliferi@gmail.com"
+              onClick={() => trackEvent("Social Icon Clicked", { platform: "Email", location: "footer" })}
               className="p-3 rounded-xl bg-[var(--surface-tint)] border border-[var(--border)] hover:bg-[var(--surface-muted)] transition-colors"
             >
               <svg className="w-5 h-5 fill-[var(--text-secondary)]" viewBox="0 0 24 24">
@@ -346,16 +370,32 @@ function Footer() {
             <span className="font-primary text-sm font-semibold text-[var(--text-primary)]">
               Navigation
             </span>
-            <Link href="/" className="font-primary text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
+            <Link
+              href="/"
+              onClick={() => trackEvent("Footer Nav Clicked", { link: "Home" })}
+              className="font-primary text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+            >
               Home
             </Link>
-            <Link href="#projects" className="font-primary text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
+            <Link
+              href="#projects"
+              onClick={() => trackEvent("Footer Nav Clicked", { link: "Projects" })}
+              className="font-primary text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+            >
               Projects
             </Link>
-            <Link href="#blog" className="font-primary text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
+            <Link
+              href="#blog"
+              onClick={() => trackEvent("Footer Nav Clicked", { link: "Blog" })}
+              className="font-primary text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+            >
               Blog
             </Link>
-            <Link href="#about" className="font-primary text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
+            <Link
+              href="#about"
+              onClick={() => trackEvent("Footer Nav Clicked", { link: "About" })}
+              className="font-primary text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+            >
               About
             </Link>
           </div>
@@ -363,16 +403,38 @@ function Footer() {
             <span className="font-primary text-sm font-semibold text-[var(--text-primary)]">
               Connect
             </span>
-            <a href="https://github.com/ChryssaAliferi" target="_blank" rel="noopener noreferrer" className="font-primary text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
+            <a
+              href="https://github.com/ChryssaAliferi"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackEvent("Social Link Clicked", { platform: "GitHub", location: "footer" })}
+              className="font-primary text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+            >
               GitHub
             </a>
-            <a href="https://www.linkedin.com/in/chryssaaliferi/" target="_blank" rel="noopener noreferrer" className="font-primary text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
+            <a
+              href="https://www.linkedin.com/in/chryssaaliferi/"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackEvent("Social Link Clicked", { platform: "LinkedIn", location: "footer" })}
+              className="font-primary text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+            >
               LinkedIn
             </a>
-            <a href="https://x.com/ChryssaAl" target="_blank" rel="noopener noreferrer" className="font-primary text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
+            <a
+              href="https://x.com/ChryssaAl"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackEvent("Social Link Clicked", { platform: "X", location: "footer" })}
+              className="font-primary text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+            >
               X
             </a>
-            <a href="mailto:c.aliferi@gmail.com" className="font-primary text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
+            <a
+              href="mailto:c.aliferi@gmail.com"
+              onClick={() => trackEvent("Social Link Clicked", { platform: "Email", location: "footer" })}
+              className="font-primary text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+            >
               Email
             </a>
           </div>
