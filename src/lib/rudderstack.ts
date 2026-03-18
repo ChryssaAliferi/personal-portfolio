@@ -3,7 +3,6 @@
 import { RudderAnalytics } from "@rudderstack/analytics-js";
 
 let analyticsInstance: RudderAnalytics | null = null;
-let isReady = false;
 
 export function initAnalytics(): void {
   if (typeof window === "undefined") return;
@@ -12,21 +11,13 @@ export function initAnalytics(): void {
   const writeKey = process.env.NEXT_PUBLIC_RUDDERSTACK_WRITE_KEY;
   const dataPlaneUrl = process.env.NEXT_PUBLIC_RUDDERSTACK_DATA_PLANE_URL;
 
-  console.log("[RudderStack] Initializing...", { writeKey: !!writeKey, dataPlaneUrl: !!dataPlaneUrl });
-
   if (!writeKey || !dataPlaneUrl) {
-    console.warn("[RudderStack] Credentials not configured");
     return;
   }
 
   analyticsInstance = new RudderAnalytics();
   analyticsInstance.load(writeKey, dataPlaneUrl, {
     integrations: { All: true },
-  });
-
-  analyticsInstance.ready(() => {
-    isReady = true;
-    console.log("[RudderStack] SDK Ready!");
   });
 }
 
@@ -38,7 +29,6 @@ export function getAnalytics(): RudderAnalytics | null {
 export function trackPage(name?: string) {
   const analytics = getAnalytics();
   if (analytics) {
-    console.log("[RudderStack] Tracking page:", name ?? "Home");
     if (name) {
       analytics.page({ name });
     } else {
@@ -54,7 +44,6 @@ export function trackEvent(
 ) {
   const analytics = getAnalytics();
   if (analytics) {
-    console.log("[RudderStack] Tracking event:", event, properties);
     analytics.track(event, properties);
   }
 }
