@@ -100,10 +100,10 @@ function Header() {
         </Link>
         <Link
           href="#contact"
-          onClick={() => trackEvent("CTA Clicked", { cta: "Get in Touch", location: "header" })}
+          onClick={() => trackEvent("CTA Clicked", { cta: "Work with me", location: "header" })}
           className="font-primary text-[13px] font-medium text-white bg-[var(--accent)] rounded-full px-6 py-3 hover:opacity-90 transition-opacity"
         >
-          Get in Touch
+          Work with me
         </Link>
       </nav>
     </header>
@@ -116,16 +116,16 @@ function Hero() {
     <section className="flex flex-col items-center gap-8 px-20 py-[100px] bg-[var(--background)]">
       <div className="px-4 py-2 rounded-full bg-[var(--accent-tint)] border border-[rgba(124,144,130,0.19)]">
         <span className="font-primary text-[13px] font-medium text-[var(--accent)]">
-          Product Engineering Leader
+          Engineering &amp; Product Leader
         </span>
       </div>
       <h1 className="font-serif text-[56px] text-[var(--text-primary)] text-center leading-[1.1] tracking-[-1.2px]">
-        Bridging product strategy
+        Designing systems that power products
         <br />
-        and engineering
+        — and the teams behind them.
       </h1>
-      <p className="font-primary text-lg text-[var(--text-body)] text-center leading-[1.6]">
-        From SDK architecture to product vision — shipping what matters
+      <p className="font-primary text-lg text-[var(--text-body)] text-center leading-[1.6] max-w-[600px]">
+        Engineering &amp; Product Leader at RudderStack, focused on SDKs, integrations, and data platforms used in production.
       </p>
       <div className="flex gap-4 pt-6">
         <Link
@@ -209,10 +209,10 @@ function Projects() {
     <section id="projects" className="flex flex-col gap-12 px-20 py-20 bg-[var(--background)]">
       <div className="flex flex-col items-center gap-4">
         <span className="font-primary text-xs font-semibold text-[var(--accent)] tracking-[2px]">
-          FEATURED WORK
+          SELECTED WORK
         </span>
         <h2 className="font-serif text-4xl text-[var(--text-primary)] tracking-[-0.8px]">
-          GitHub Repositories
+          Products, Platforms &amp; Experiments
         </h2>
       </div>
       <div className="flex gap-6">
@@ -279,10 +279,10 @@ function Blog() {
       <div className="flex items-center justify-between">
         <div className="flex flex-col gap-4">
           <span className="font-primary text-xs font-semibold text-[var(--accent)] tracking-[2px]">
-            FROM THE BLOG
+            THOUGHTS
           </span>
           <h2 className="font-serif text-4xl text-[var(--text-primary)] tracking-[-0.8px]">
-            Ideas &amp; Insights
+            On building products, scaling systems, and the future of software.
           </h2>
         </div>
         <a
@@ -317,7 +317,7 @@ function Footer() {
             Chryssa Aliferi
           </span>
           <p className="font-primary text-[15px] text-[var(--text-body)] leading-[1.6]">
-            Mobile engineer &amp; product manager building apps that make a difference.
+            Engineering &amp; Product Leader building systems that make a difference.
           </p>
           <div className="flex gap-4 pt-2">
             <a
