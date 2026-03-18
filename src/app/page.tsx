@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { trackEvent } from "@/lib/rudderstack";
 
 // Project data
 const projects = [
@@ -143,11 +146,16 @@ function ProjectCard({
   forks: number;
   url: string;
 }) {
+  const handleClick = () => {
+    trackEvent("Project Clicked", { project: title, url, tag });
+  };
+
   return (
     <a
       href={url}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={handleClick}
       className="flex-1 bg-white rounded-[20px] border border-[var(--border)] overflow-hidden hover:shadow-lg hover:border-[var(--accent)] transition-all duration-200">
       <div className="flex flex-col gap-3 p-6 pb-5">
         <div className={`w-fit px-3 py-1.5 rounded-lg text-[12px] font-medium ${tagColor}`}>
@@ -211,11 +219,16 @@ function BlogPostCard({
   tags: string[];
   url: string;
 }) {
+  const handleClick = () => {
+    trackEvent("Blog Post Clicked", { title, url, tags });
+  };
+
   return (
     <a
       href={url}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={handleClick}
       className="flex-1 flex flex-col gap-4 p-6 rounded-[20px] bg-[var(--background)] border border-[var(--border)] hover:shadow-lg hover:border-[var(--accent)] transition-all duration-200">
       <span className="font-primary text-[13px] font-medium text-[var(--text-muted)]">
         {date}
