@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
 import { trackEvent } from "@/lib/rudderstack";
 
 // Project data
@@ -67,16 +68,20 @@ const blogPosts = [
 
 // Header Component
 function Header() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
-    <header className="flex items-center justify-between px-20 py-5 bg-[var(--card)] border-b border-[var(--border)]">
+    <header className="flex items-center justify-between px-5 md:px-20 py-5 bg-[var(--card)] border-b border-[var(--border)]">
       <Link
         href="/"
         onClick={() => trackEvent("Logo Clicked", { location: "header" })}
-        className="font-serif text-2xl text-[var(--text-primary)] tracking-[-0.5px]"
+        className="font-serif text-xl md:text-2xl text-[var(--text-primary)] tracking-[-0.5px]"
       >
         Chryssa Aliferi
       </Link>
-      <nav className="flex items-center gap-10">
+
+      {/* Desktop Navigation */}
+      <nav className="hidden md:flex items-center gap-10">
         <Link
           href="#projects"
           onClick={() => trackEvent("Nav Link Clicked", { link: "Projects" })}
@@ -99,6 +104,57 @@ function Header() {
           CV
         </Link>
       </nav>
+
+      {/* Mobile Menu Button */}
+      <button
+        className="md:hidden p-2 -mr-2"
+        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        aria-label="Toggle menu"
+      >
+        <svg className="w-6 h-6 text-[var(--text-primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          {mobileMenuOpen ? (
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          ) : (
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+          )}
+        </svg>
+      </button>
+
+      {/* Mobile Navigation */}
+      {mobileMenuOpen && (
+        <nav className="absolute top-[73px] left-0 right-0 bg-[var(--card)] border-b border-[var(--border)] flex flex-col p-5 gap-4 md:hidden z-50">
+          <Link
+            href="#projects"
+            onClick={() => {
+              setMobileMenuOpen(false);
+              trackEvent("Nav Link Clicked", { link: "Projects" });
+            }}
+            className="font-primary text-base text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+          >
+            Projects
+          </Link>
+          <Link
+            href="#blog"
+            onClick={() => {
+              setMobileMenuOpen(false);
+              trackEvent("Nav Link Clicked", { link: "Blog" });
+            }}
+            className="font-primary text-base text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+          >
+            Blog
+          </Link>
+          <Link
+            href="/cv"
+            onClick={() => {
+              setMobileMenuOpen(false);
+              trackEvent("Nav Link Clicked", { link: "CV" });
+            }}
+            className="font-primary text-base text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+          >
+            CV
+          </Link>
+        </nav>
+      )}
     </header>
   );
 }
@@ -106,32 +162,32 @@ function Header() {
 // Hero Component
 function Hero() {
   return (
-    <section className="flex flex-col items-center gap-8 px-20 py-[100px] bg-[var(--background)]">
+    <section className="flex flex-col items-center gap-6 md:gap-8 px-5 md:px-20 py-16 md:py-[100px] bg-[var(--background)]">
       <div className="px-4 py-2 rounded-full bg-[var(--accent-tint)] border border-[rgba(124,144,130,0.19)]">
-        <span className="font-primary text-[13px] font-medium text-[var(--accent)]">
+        <span className="font-primary text-[12px] md:text-[13px] font-medium text-[var(--accent)]">
           Engineering &amp; Product Leader
         </span>
       </div>
-      <h1 className="font-serif text-[56px] text-[var(--text-primary)] text-center leading-[1.1] tracking-[-1.2px]">
+      <h1 className="font-serif text-[32px] md:text-[48px] lg:text-[56px] text-[var(--text-primary)] text-center leading-[1.15] md:leading-[1.1] tracking-[-0.8px] md:tracking-[-1.2px]">
         Designing systems that power products
-        <br />
-        — and the teams behind them.
+        <br className="hidden sm:block" />
+        <span className="sm:hidden"> </span>— and the teams behind them.
       </h1>
-      <p className="font-primary text-lg text-[var(--text-body)] text-center leading-[1.6] max-w-[600px]">
+      <p className="font-primary text-base md:text-lg text-[var(--text-body)] text-center leading-[1.6] max-w-[600px]">
         Engineering &amp; Product Leader at RudderStack, focused on SDKs, integrations, and data platforms used in production.
       </p>
-      <div className="flex gap-4 pt-6">
+      <div className="flex flex-col sm:flex-row gap-3 md:gap-4 pt-4 md:pt-6 w-full sm:w-auto">
         <Link
           href="#projects"
           onClick={() => trackEvent("CTA Clicked", { cta: "View Projects", location: "hero" })}
-          className="font-primary text-[13px] font-medium text-white bg-[var(--accent)] rounded-full px-8 py-4 hover:opacity-90 transition-opacity"
+          className="font-primary text-[13px] font-medium text-white bg-[var(--accent)] rounded-full px-8 py-4 hover:opacity-90 transition-opacity text-center"
         >
           View Projects
         </Link>
         <Link
           href="#blog"
           onClick={() => trackEvent("CTA Clicked", { cta: "Read Blog", location: "hero" })}
-          className="font-primary text-[13px] font-medium text-[var(--text-primary)] bg-white rounded-full px-8 py-4 border border-[var(--border)] hover:bg-[var(--surface-tint)] transition-colors"
+          className="font-primary text-[13px] font-medium text-[var(--text-primary)] bg-white rounded-full px-8 py-4 border border-[var(--border)] hover:bg-[var(--surface-tint)] transition-colors text-center"
         >
           Read Blog
         </Link>
@@ -199,16 +255,16 @@ function ProjectCard({
 // Projects Section
 function Projects() {
   return (
-    <section id="projects" className="flex flex-col gap-12 px-20 py-20 bg-[var(--background)]">
-      <div className="flex flex-col items-center gap-4">
+    <section id="projects" className="flex flex-col gap-8 md:gap-12 px-5 md:px-20 py-12 md:py-20 bg-[var(--background)]">
+      <div className="flex flex-col items-center gap-3 md:gap-4">
         <span className="font-primary text-xs font-semibold text-[var(--accent)] tracking-[2px]">
           SELECTED WORK
         </span>
-        <h2 className="font-serif text-4xl text-[var(--text-primary)] tracking-[-0.8px]">
+        <h2 className="font-serif text-2xl md:text-4xl text-[var(--text-primary)] tracking-[-0.5px] md:tracking-[-0.8px] text-center">
           Products, Platforms &amp; Experiments
         </h2>
       </div>
-      <div className="flex gap-6">
+      <div className="flex flex-col md:flex-row gap-4 md:gap-6">
         {projects.map((project) => (
           <ProjectCard key={project.title} {...project} />
         ))}
@@ -268,13 +324,13 @@ function BlogPostCard({
 // Blog Section
 function Blog() {
   return (
-    <section id="blog" className="flex flex-col gap-12 px-20 py-20 bg-white border-t border-[var(--border)]">
-      <div className="flex items-center justify-between">
-        <div className="flex flex-col gap-4">
+    <section id="blog" className="flex flex-col gap-8 md:gap-12 px-5 md:px-20 py-12 md:py-20 bg-white border-t border-[var(--border)]">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 md:gap-8">
+        <div className="flex flex-col gap-3 md:gap-4">
           <span className="font-primary text-xs font-semibold text-[var(--accent)] tracking-[2px]">
             THOUGHTS
           </span>
-          <h2 className="font-serif text-4xl text-[var(--text-primary)] tracking-[-0.8px]">
+          <h2 className="font-serif text-2xl md:text-4xl text-[var(--text-primary)] tracking-[-0.5px] md:tracking-[-0.8px]">
             On building products, scaling systems, and the future of software.
           </h2>
         </div>
@@ -283,7 +339,7 @@ function Blog() {
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => trackEvent("External Link Clicked", { link: "View All Posts", platform: "Medium" })}
-          className="flex items-center gap-2 font-primary text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+          className="flex items-center gap-2 font-primary text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors shrink-0"
         >
           View all posts
           <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -291,7 +347,7 @@ function Blog() {
           </svg>
         </a>
       </div>
-      <div className="flex gap-6">
+      <div className="flex flex-col md:flex-row gap-4 md:gap-6">
         {blogPosts.map((post) => (
           <BlogPostCard key={post.title} {...post} />
         ))}
@@ -303,22 +359,22 @@ function Blog() {
 // Footer Component
 function Footer() {
   return (
-    <footer id="about" className="flex flex-col gap-12 px-20 py-20 bg-[var(--background)] border-t border-[var(--border)]">
-      <div className="flex justify-between">
+    <footer id="about" className="flex flex-col gap-8 md:gap-12 px-5 md:px-20 py-12 md:py-20 bg-[var(--background)] border-t border-[var(--border)]">
+      <div className="flex flex-col md:flex-row justify-between gap-10 md:gap-8">
         <div className="flex flex-col gap-4 max-w-[400px]">
-          <span className="font-serif text-[28px] text-[var(--text-primary)]">
+          <span className="font-serif text-[24px] md:text-[28px] text-[var(--text-primary)]">
             Chryssa Aliferi
           </span>
-          <p className="font-primary text-[15px] text-[var(--text-body)] leading-[1.6]">
+          <p className="font-primary text-[14px] md:text-[15px] text-[var(--text-body)] leading-[1.6]">
             Engineering &amp; Product Leader building systems that make a difference.
           </p>
-          <div className="flex gap-4 pt-2">
+          <div className="flex gap-3 md:gap-4 pt-2">
             <a
               href="https://github.com/ChryssaAliferi"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackEvent("Social Icon Clicked", { platform: "GitHub", location: "footer" })}
-              className="p-3 rounded-xl bg-[var(--surface-tint)] border border-[var(--border)] hover:bg-[var(--surface-muted)] transition-colors"
+              className="p-2.5 md:p-3 rounded-xl bg-[var(--surface-tint)] border border-[var(--border)] hover:bg-[var(--surface-muted)] transition-colors"
             >
               <svg className="w-5 h-5 fill-[var(--text-secondary)]" viewBox="0 0 24 24">
                 <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12Z" />
@@ -329,7 +385,7 @@ function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackEvent("Social Icon Clicked", { platform: "LinkedIn", location: "footer" })}
-              className="p-3 rounded-xl bg-[var(--surface-tint)] border border-[var(--border)] hover:bg-[var(--surface-muted)] transition-colors"
+              className="p-2.5 md:p-3 rounded-xl bg-[var(--surface-tint)] border border-[var(--border)] hover:bg-[var(--surface-muted)] transition-colors"
             >
               <svg className="w-5 h-5 fill-[var(--text-secondary)]" viewBox="0 0 24 24">
                 <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286ZM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065Zm1.782 13.019H3.555V9h3.564v11.452ZM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003Z" />
@@ -340,7 +396,7 @@ function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackEvent("Social Icon Clicked", { platform: "X", location: "footer" })}
-              className="p-3 rounded-xl bg-[var(--surface-tint)] border border-[var(--border)] hover:bg-[var(--surface-muted)] transition-colors"
+              className="p-2.5 md:p-3 rounded-xl bg-[var(--surface-tint)] border border-[var(--border)] hover:bg-[var(--surface-muted)] transition-colors"
             >
               <svg className="w-5 h-5 fill-[var(--text-secondary)]" viewBox="0 0 24 24">
                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z" />
@@ -349,7 +405,7 @@ function Footer() {
             <a
               href="mailto:c.aliferi@gmail.com"
               onClick={() => trackEvent("Social Icon Clicked", { platform: "Email", location: "footer" })}
-              className="p-3 rounded-xl bg-[var(--surface-tint)] border border-[var(--border)] hover:bg-[var(--surface-muted)] transition-colors"
+              className="p-2.5 md:p-3 rounded-xl bg-[var(--surface-tint)] border border-[var(--border)] hover:bg-[var(--surface-muted)] transition-colors"
             >
               <svg className="w-5 h-5 fill-[var(--text-secondary)]" viewBox="0 0 24 24">
                 <path d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67Z" />
@@ -358,8 +414,8 @@ function Footer() {
             </a>
           </div>
         </div>
-        <div className="flex gap-20">
-          <div className="flex flex-col gap-4">
+        <div className="flex gap-12 md:gap-20">
+          <div className="flex flex-col gap-3 md:gap-4">
             <span className="font-primary text-sm font-semibold text-[var(--text-primary)]">
               Navigation
             </span>
@@ -392,7 +448,7 @@ function Footer() {
               CV
             </Link>
           </div>
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-3 md:gap-4">
             <span className="font-primary text-sm font-semibold text-[var(--text-primary)]">
               Connect
             </span>
@@ -434,7 +490,7 @@ function Footer() {
         </div>
       </div>
       <div className="w-full h-px bg-[var(--border)]" />
-      <span className="font-primary text-[13px] text-[var(--text-muted)]">
+      <span className="font-primary text-[12px] md:text-[13px] text-[var(--text-muted)]">
         © 2026 Chryssa Aliferi. All rights reserved.
       </span>
     </footer>
