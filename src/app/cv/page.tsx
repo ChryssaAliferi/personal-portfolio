@@ -8,11 +8,26 @@ import { trackEvent } from "@/lib/rudderstack";
 const experiences = [
   {
     company: "RudderStack",
+    role: "Product Manager",
+    type: "Full-time",
+    location: "Remote",
+    period: "Feb 2026 - Present",
+    duration: "4 mos",
+    description: [
+      "Defining the product vision and strategy across SDKs, Integrations, and Warehouses.",
+      "Driving closer alignment between customer needs, engineering, and business impact.",
+      "Enabling more flexible, scalable, and intelligent data flows.",
+      "Empowering developers with better tooling and experiences.",
+    ],
+    current: true,
+  },
+  {
+    company: "RudderStack",
     role: "Engineering Manager",
     type: "Full-time",
     location: "Remote",
-    period: "Sep 2023 - Present",
-    duration: "2 yrs 7 mos",
+    period: "Sep 2023 - Feb 2026",
+    duration: "2 yrs 5 mos",
     description: [
       "Ownership of 15+ RudderStack SDKs from development to post-production.",
       "Managing the team of developers and working with them to deliver high-quality products.",
@@ -20,7 +35,7 @@ const experiences = [
       "Set up and led mobile end-to-end testing framework for the engineering organisation.",
       "Defining and building a roadmap by collaborating with the product managers.",
     ],
-    current: true,
+    current: false,
   },
   {
     company: "Plum",
