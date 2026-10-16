@@ -8,11 +8,13 @@
   --surface-muted: #F0EDE8;
 
   --text-primary: #2D2D2D;
-  --text-secondary: #8A8A8A;
-  --text-muted: #ADADAD;
+  /* Darkened to meet WCAG AA (4.5:1) on the background, card, and tint surfaces */
+  --text-secondary: #636363;
+  --text-muted: #717171;
   --text-body: #5A5A5A;
 
-  --accent: #7C9082;
+  --accent: #7C9082; /* decorative only: borders, timeline dot */
+  --accent-strong: #59675D; /* accent text and filled buttons (5.6:1 on background, 6:1 with white text) */
   --accent-tint: rgba(124, 144, 130, 0.15);
 
   --border: #E8E4DF;
@@ -31,6 +33,7 @@
   --color-text-body: var(--text-body);
 
   --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
   --color-accent-tint: var(--accent-tint);
 
   --color-border: var(--border);
@@ -51,6 +54,22 @@
 
   .font-serif {
     font-family: var(--font-fraunces), "Fraunces", Georgia, serif;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent-strong);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 
