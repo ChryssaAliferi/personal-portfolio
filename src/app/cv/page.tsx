@@ -12,10 +12,10 @@ export default function CVPage() {
   return (
     <div className="min-h-screen bg-[var(--background)]">
       <SiteHeader />
-      <main className="px-5 md:px-20 py-10 md:py-16">
+      <main id="main" className="px-5 md:px-20 py-10 md:py-16">
         {/* Hero Section - Centered */}
         <div className="flex flex-col items-center gap-3 md:gap-4 mb-10 md:mb-16 text-center">
-          <span className="font-primary text-xs font-semibold text-[var(--accent)] tracking-[2px]">
+          <span className="font-primary text-xs font-semibold text-[var(--accent-strong)] tracking-[2px]">
             EXPERIENCE
           </span>
           <h1 className="font-serif text-[28px] md:text-[40px] lg:text-[48px] text-[var(--text-primary)] tracking-[-0.5px] md:tracking-[-1px] leading-[1.2] md:leading-[1.1]">
@@ -32,7 +32,7 @@ export default function CVPage() {
               href="https://www.linkedin.com/in/chryssaaliferi/"
               eventName="CTA Clicked"
               eventProperties={{ cta: "View LinkedIn", location: "cv-hero" }}
-              className="font-primary text-[13px] font-medium text-white bg-[var(--accent)] rounded-full px-6 py-3 hover:opacity-90 transition-opacity inline-flex items-center justify-center gap-2"
+              className="font-primary text-[13px] font-medium text-white bg-[var(--accent-strong)] rounded-full px-6 py-3 hover:opacity-90 transition-opacity inline-flex items-center justify-center gap-2"
             >
               <LinkedInIcon className="w-4 h-4 fill-white" />
               View LinkedIn
@@ -51,6 +51,7 @@ export default function CVPage() {
         {/* Experience Timeline - Centered Container */}
         <div className="flex justify-center">
           <div className="w-full max-w-[900px]">
+            <h2 className="sr-only">Work experience</h2>
             {experiences.map((exp, index) => (
               <ExperienceCard key={`${exp.company}-${exp.role}-${index}`} {...exp} />
             ))}

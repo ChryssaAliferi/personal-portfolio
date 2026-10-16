@@ -37,6 +37,7 @@ export function SiteFooter({ location }: { location: "footer" | "cv-footer" }) {
                   href={href}
                   eventName="Social Icon Clicked"
                   eventProperties={{ platform, location }}
+                  aria-label={platform === "Email" ? "Email Chryssa" : `Chryssa on ${platform}`}
                   className="p-2.5 md:p-3 rounded-xl bg-[var(--surface-tint)] border border-[var(--border)] hover:bg-[var(--surface-muted)] transition-colors"
                 >
                   <Icon className="w-5 h-5 fill-[var(--text-secondary)]" />
