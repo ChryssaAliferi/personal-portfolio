@@ -46,7 +46,7 @@ export function ConsentBanner() {
         <button
           type="button"
           onClick={() => choose("granted")}
-          className="flex-1 font-primary text-[13px] font-medium text-white bg-[var(--accent)] rounded-full px-5 py-3 hover:opacity-90 transition-opacity"
+          className="flex-1 font-primary text-[13px] font-medium text-white bg-[var(--accent-strong)] rounded-full px-5 py-3 hover:opacity-90 transition-opacity"
         >
           Allow analytics
         </button>

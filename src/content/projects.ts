@@ -13,7 +13,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     tag: "Kotlin",
-    tagColor: "bg-[#A97BFF15] text-[#A97BFF]",
+    tagColor: "bg-[#A97BFF15] text-[#7656B2]",
     title: "rudder-sdk-kotlin",
     description:
       "Kotlin Android SDK and Kotlin JVM for RudderStack — the Customer Data Platform for Developers. Contributed to core SDK features.",
@@ -23,7 +23,7 @@ export const projects: Project[] = [
   },
   {
     tag: "Android",
-    tagColor: "bg-[#A97BFF15] text-[#A97BFF]",
+    tagColor: "bg-[#A97BFF15] text-[#7656B2]",
     title: "AndroidxBiometric",
     description:
       "Example demonstrating the AndroidX Biometric API with a utility class for building biometric prompts on Android.",
@@ -33,7 +33,7 @@ export const projects: Project[] = [
   },
   {
     tag: "Kotlin",
-    tagColor: "bg-[#A97BFF15] text-[#A97BFF]",
+    tagColor: "bg-[#A97BFF15] text-[#7656B2]",
     title: "StateStore-Kotlin",
     description:
       "State Management library for Kotlin projects. Simple, lightweight architecture for managing UI state in Android and JVM applications.",
