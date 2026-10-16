@@ -41,6 +41,14 @@ const projects = [
 // Blog data
 const blogPosts = [
   {
+    date: "Oct 13, 2026",
+    title: "Send ChatGPT Ad Conversions to OpenAI Ads with RudderStack",
+    excerpt:
+      "How RudderStack's OpenAI Ads destination sends conversions from your existing events via the Conversions API, the Pixel, or both, with deduplication and PII hashing built in.",
+    tags: ["OpenAI Ads", "Integrations"],
+    url: "https://www.rudderstack.com/blog/send-chatgpt-ad-conversions-to-openai-ads-with-rudderstack/",
+  },
+  {
     date: "Feb 22, 2021",
     title: "Leveraging the Power of Android Design Language",
     excerpt:
@@ -347,7 +355,7 @@ function Blog() {
           </svg>
         </a>
       </div>
-      <div className="flex flex-col md:flex-row gap-4 md:gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
         {blogPosts.map((post) => (
           <BlogPostCard key={post.title} {...post} />
         ))}
