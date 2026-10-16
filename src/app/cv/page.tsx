@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { trackEvent } from "@/lib/rudderstack";
+import { openConsentPreferences } from "@/lib/consent";
 import { formatPeriod } from "@/lib/dates";
 import { Duration } from "@/components/Duration";
 
@@ -418,9 +419,18 @@ function Footer() {
         </div>
       </div>
       <div className="w-full h-px bg-[var(--border)]" />
-      <span className="font-primary text-[12px] md:text-[13px] text-[var(--text-muted)]">
-        © 2026 Chryssa Aliferi. All rights reserved.
-      </span>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <span className="font-primary text-[12px] md:text-[13px] text-[var(--text-muted)]">
+          © 2026 Chryssa Aliferi. All rights reserved.
+        </span>
+        <button
+          type="button"
+          onClick={openConsentPreferences}
+          className="w-fit font-primary text-[12px] md:text-[13px] text-[var(--text-muted)] hover:text-[var(--text-primary)] underline underline-offset-2 transition-colors"
+        >
+          Cookie preferences
+        </button>
+      </div>
     </footer>
   );
 }
