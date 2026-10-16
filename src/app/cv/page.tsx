@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useState } from "react";
 import { trackEvent } from "@/lib/rudderstack";
+import { formatPeriod } from "@/lib/dates";
+import { Duration } from "@/components/Duration";
 
 // Experience data
 const experiences = [
@@ -11,8 +13,8 @@ const experiences = [
     role: "Product Manager",
     type: "Full-time",
     location: "Remote",
-    period: "Feb 2026 - Present",
-    duration: "4 mos",
+    start: "2026-02",
+    end: null,
     description: [
       "Defining the product vision and strategy across SDKs, Integrations, and Warehouses.",
       "Driving closer alignment between customer needs, engineering, and business impact.",
@@ -26,8 +28,8 @@ const experiences = [
     role: "Engineering Manager",
     type: "Full-time",
     location: "Remote",
-    period: "Sep 2023 - Feb 2026",
-    duration: "2 yrs 5 mos",
+    start: "2023-09",
+    end: "2026-02",
     description: [
       "Ownership of 15+ RudderStack SDKs from development to post-production.",
       "Managing the team of developers and working with them to deliver high-quality products.",
@@ -42,8 +44,8 @@ const experiences = [
     role: "Head of Mobile",
     type: "Full-time",
     location: "On-site",
-    period: "Jun 2019 - Sep 2023",
-    duration: "4 yrs 4 mos",
+    start: "2019-06",
+    end: "2023-09",
     description: [
       "Led the Mobile Platform team, overseeing both Android and iOS development.",
       "Managed and mentored a growing team, expanding from an initial group to 24 engineers.",
@@ -58,8 +60,8 @@ const experiences = [
     role: "Senior Android Engineer",
     type: "Full-time",
     location: "Athens",
-    period: "Jun 2017 - May 2019",
-    duration: "2 yrs",
+    start: "2017-06",
+    end: "2019-05",
     description: [
       "\"Squad launcher\", helped 3 new cross-functional squads to kick-off, leading teams to cultivate product-oriented engineering focus.",
       "Leading role in cross-functional squads responsible for creating end-to-end features in Payments, Analytics, and Growth missions.",
@@ -73,8 +75,8 @@ const experiences = [
     role: "Android Developer",
     type: "Full-time",
     location: "Athens",
-    period: "Mar 2014 - Jun 2017",
-    duration: "3 yrs 4 mos",
+    start: "2014-03",
+    end: "2017-06",
     description: [
       "Part of a small mobile team to develop Beat Android passenger and driver apps.",
       "Responsible for setting the architectural re-structure of the projects.",
@@ -88,8 +90,8 @@ const experiences = [
     role: "Junior Software Engineer",
     type: "Full-time",
     location: "Greece",
-    period: "Apr 2013 - Feb 2014",
-    duration: "11 mos",
+    start: "2013-04",
+    end: "2014-02",
     description: [
       "OSS/BSS Department working on Billing systems.",
       "Software Architecture design and implementation.",
@@ -101,8 +103,8 @@ const experiences = [
     role: "Intern",
     type: "Internship",
     location: "Greece",
-    period: "Oct 2012 - Mar 2013",
-    duration: "6 mos",
+    start: "2012-10",
+    end: "2013-03",
     description: [
       "Distributed System for Log File Analysis (Big Data Analytics) using Apache Hadoop.",
       "Creation and installation of the Hadoop distributed environment with local virtual machines.",
@@ -211,8 +213,8 @@ function ExperienceCard({
   role,
   type,
   location,
-  period,
-  duration,
+  start,
+  end,
   description,
   current,
 }: {
@@ -220,8 +222,8 @@ function ExperienceCard({
   role: string;
   type: string;
   location: string;
-  period: string;
-  duration: string;
+  start: string;
+  end: string | null;
   description: string[];
   current: boolean;
 }) {
@@ -255,9 +257,13 @@ function ExperienceCard({
             </div>
           </div>
           <div className="flex flex-col md:items-end gap-0.5 md:gap-1 mt-1 md:mt-0">
-            <span className="font-primary text-xs md:text-sm text-[var(--text-secondary)]">{period}</span>
+            <span className="font-primary text-xs md:text-sm text-[var(--text-secondary)]">{formatPeriod(start, end)}</span>
             <div className="flex items-center gap-1.5 md:gap-2">
-              <span className="font-primary text-xs md:text-sm text-[var(--text-muted)]">{duration}</span>
+              <Duration
+                start={start}
+                end={end}
+                className="font-primary text-xs md:text-sm text-[var(--text-muted)]"
+              />
               <span className="text-[var(--text-muted)]">·</span>
               <span className="font-primary text-xs md:text-sm text-[var(--text-muted)]">{location}</span>
             </div>
