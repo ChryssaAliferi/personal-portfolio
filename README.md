@@ -29,14 +29,14 @@ Content lives in `src/content/`, separate from the page markup:
 ```
 src/
   app/          routes: / (page.tsx) and /cv
-  components/   SiteHeader, SiteFooter, cards, TrackedLink, ConsentBanner, icons
+  components/   SiteHeader, SiteFooter, cards, TrackedLink, icons
   content/      site data (see above)
-  lib/          RudderStack wrapper, consent storage, date helpers
+  lib/          RudderStack wrapper, date helpers
 ```
 
 ## Analytics
 
-Analytics use the RudderStack JS SDK and only run after the visitor accepts the consent banner.
+Analytics use the RudderStack JS SDK.
 
 Set these in `.env.local` (and in the Vercel project settings):
 

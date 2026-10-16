@@ -3,7 +3,6 @@
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { initAnalytics, trackPage } from "@/lib/rudderstack";
-import { ConsentBanner } from "@/components/ConsentBanner";
 
 // Readable page names for the RudderStack `page` call. Unknown routes fall
 // back to their path so new pages are still tracked.
@@ -27,10 +26,5 @@ export function AnalyticsProvider({ children }: { children: React.ReactNode }) {
     trackPage(PAGE_NAMES[pathname] ?? pathname);
   }, [pathname]);
 
-  return (
-    <>
-      {children}
-      <ConsentBanner />
-    </>
-  );
+  return <>{children}</>;
 }

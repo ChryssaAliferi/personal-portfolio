@@ -1,4 +1,3 @@
-import { CookiePreferencesButton } from "@/components/CookiePreferencesButton";
 import { EmailIcon, GitHubIcon, LinkedInIcon, XIcon } from "@/components/icons";
 import { TrackedLink } from "@/components/TrackedLink";
 import { navLinks, socialLinks, type SocialPlatform } from "@/content/site";
@@ -78,13 +77,10 @@ export function SiteFooter({ location }: { location: "footer" | "cv-footer" }) {
         </div>
       </div>
       <div className="w-full h-px bg-[var(--border)]" />
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-        {/* Year comes from the build; suppress the warning if a visitor's clock is in a newer year. */}
-        <span className="font-primary text-[12px] md:text-[13px] text-[var(--text-muted)]" suppressHydrationWarning>
-          © {new Date().getFullYear()} Chryssa Aliferi. All rights reserved.
-        </span>
-        <CookiePreferencesButton />
-      </div>
+      {/* Year comes from the build; suppress the warning if a visitor's clock is in a newer year. */}
+      <span className="font-primary text-[12px] md:text-[13px] text-[var(--text-muted)]" suppressHydrationWarning>
+        © {new Date().getFullYear()} Chryssa Aliferi. All rights reserved.
+      </span>
     </footer>
   );
 }
