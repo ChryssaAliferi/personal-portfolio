@@ -30,7 +30,9 @@ export function trackPage(name?: string) {
   const analytics = getAnalytics();
   if (analytics) {
     if (name) {
-      analytics.page({ name });
+      // Pass the name as a string: page({ name }) would send it as a
+      // property and leave the event's page name empty.
+      analytics.page(name);
     } else {
       analytics.page();
     }
