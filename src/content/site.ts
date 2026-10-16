@@ -1,4 +1,6 @@
-// Navigation and social links shared by the header and footer.
+// Site URL, navigation, and social links shared across the site.
+
+export const SITE_URL = "https://www.califeri.dev";
 
 export const navLinks = [
   { label: "Projects", href: "/#projects" },

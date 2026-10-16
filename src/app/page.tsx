@@ -1,5 +1,3 @@
-"use client";
-
 import { BlogPostCard } from "@/components/BlogPostCard";
 import { ProjectCard } from "@/components/ProjectCard";
 import { SiteFooter } from "@/components/SiteFooter";
