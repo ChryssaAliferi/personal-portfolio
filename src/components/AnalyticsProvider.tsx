@@ -20,13 +20,10 @@ export function AnalyticsProvider({ children }: { children: React.ReactNode }) {
 
   // Runs on first load and on every client-side navigation, because the
   // root layout (and this provider) stays mounted between routes.
+  // No delay needed: calls made before the SDK finishes loading are
+  // buffered by the SDK and sent once it is ready.
   useEffect(() => {
-    // Short delay to ensure the SDK is loaded
-    const timer = setTimeout(() => {
-      trackPage(PAGE_NAMES[pathname] ?? pathname);
-    }, 100);
-
-    return () => clearTimeout(timer);
+    trackPage(PAGE_NAMES[pathname] ?? pathname);
   }, [pathname]);
 
   return <>{children}</>;
