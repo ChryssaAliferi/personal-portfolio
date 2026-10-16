@@ -1,11 +1,28 @@
-"use client";
-
+import type { Metadata } from "next";
 import { ExperienceCard } from "@/components/ExperienceCard";
 import { LinkedInIcon } from "@/components/icons";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { TrackedLink } from "@/components/TrackedLink";
 import { experiences } from "@/content/experience";
+
+const description =
+  "Work experience of Chryssa Aliferi: Product Manager and Engineering Manager at RudderStack, Head of Mobile at Plum, and Android engineering at Beat.";
+
+export const metadata: Metadata = {
+  title: "CV",
+  description,
+  alternates: { canonical: "/cv" },
+  // openGraph replaces the layout's object rather than merging, so repeat the shared fields.
+  openGraph: {
+    type: "website",
+    url: "/cv",
+    siteName: "Chryssa Aliferi",
+    title: "CV | Chryssa Aliferi",
+    description,
+    locale: "en_US",
+  },
+};
 
 // Main CV Page
 export default function CVPage() {
