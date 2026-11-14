@@ -10,6 +10,14 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    date: "Nov 10, 2026",
+    title: "Already using Braze or Adjust in your mobile app? RudderStack can now send events into that same instance",
+    excerpt:
+      "RudderStack's Kotlin and Swift SDKs can now forward events into the vendor SDK instance your app already sets up, such as Braze, Adjust, CleverTap, or Sprig, so you avoid duplicate instances and double tracking.",
+    tags: ["Mobile SDKs", "Device Mode"],
+    url: "https://www.rudderstack.com/blog/rudderstack-mobile-device-mode-bring-your-own-instance/",
+  },
+  {
     date: "Oct 13, 2026",
     title: "Send ChatGPT Ad Conversions to OpenAI Ads with RudderStack",
     excerpt:
