@@ -3,7 +3,7 @@ import { ProjectCard } from "@/components/ProjectCard";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { TrackedLink } from "@/components/TrackedLink";
-import { blogPosts } from "@/content/blog";
+import { blogPosts, HOME_POST_LIMIT } from "@/content/blog";
 import { projects } from "@/content/projects";
 
 // Hero Component
@@ -80,19 +80,19 @@ function Blog() {
           </h2>
         </div>
         <TrackedLink
-          href="https://medium.com/@califeri"
-          eventName="External Link Clicked"
-          eventProperties={{ link: "View All Posts", platform: "Medium" }}
+          href="/writing"
+          eventName="CTA Clicked"
+          eventProperties={{ cta: "View All Posts", location: "blog" }}
           className="flex items-center gap-2 font-primary text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors shrink-0"
         >
-          View all posts
+          View all {blogPosts.length} posts
           <svg aria-hidden="true" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>
         </TrackedLink>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-        {blogPosts.map((post) => (
+        {blogPosts.slice(0, HOME_POST_LIMIT).map((post) => (
           <BlogPostCard key={post.title} {...post} />
         ))}
       </div>
