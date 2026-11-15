@@ -20,7 +20,7 @@ Content lives in `src/content/`, separate from the page markup:
 | File | What it holds |
 | --- | --- |
 | `projects.ts` | "Selected work" cards on the home page |
-| `blog.ts` | "Thoughts" cards on the home page, newest first |
+| `blog.ts` | All posts, newest first. The home page shows the latest `HOME_POST_LIMIT`; `/writing` lists them all |
 | `experience.ts` | CV roles. Use `"YYYY-MM"` dates and `end: null` for the current role; period and duration labels are calculated from them |
 | `site.ts` | Header navigation and social links (used by the header and footer) |
 
@@ -28,7 +28,7 @@ Content lives in `src/content/`, separate from the page markup:
 
 ```
 src/
-  app/          routes: / (page.tsx) and /cv
+  app/          routes: / (page.tsx), /cv, and /writing
   components/   SiteHeader, SiteFooter, cards, TrackedLink, icons
   content/      site data (see above)
   lib/          RudderStack wrapper, date helpers

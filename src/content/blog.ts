@@ -1,4 +1,5 @@
-// "Thoughts" cards on the home page, newest first.
+// All posts, newest first. The home page shows the first HOME_POST_LIMIT;
+// /writing lists all of them.
 
 export type BlogPost = {
   date: string;
@@ -7,6 +8,22 @@ export type BlogPost = {
   tags: string[];
   url: string;
 };
+
+// How many posts the home page shows. Even, so the 2-column grid stays full.
+export const HOME_POST_LIMIT = 4;
+
+// Where a post is published, worked out from its URL.
+export function postSource(url: string): string {
+  const host = new URL(url).hostname.replace(/^www\./, "");
+  if (host === "rudderstack.com") return "RudderStack blog";
+  if (host === "medium.com" || host.endsWith(".medium.com")) return "Medium";
+  return host;
+}
+
+// Year of a post, for grouping on /writing.
+export function postYear(date: string): string {
+  return date.slice(-4);
+}
 
 export const blogPosts: BlogPost[] = [
   {

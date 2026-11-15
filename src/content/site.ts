@@ -4,7 +4,7 @@ export const SITE_URL = "https://www.califeri.dev";
 
 export const navLinks = [
   { label: "Projects", href: "/#projects" },
-  { label: "Blog", href: "/#blog" },
+  { label: "Writing", href: "/writing" },
   { label: "CV", href: "/cv" },
 ] as const;
 
